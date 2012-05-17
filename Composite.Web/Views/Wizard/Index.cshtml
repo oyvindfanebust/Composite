@@ -1,0 +1,21 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "Wizard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<button id="run">Go!</button>
+
+<h2>Wizard</h2>
+<div id="content"></div>
+<script type="text/javascript">
+    (function () {
+        $("#run").click(function (e) {
+            $(document).trigger('foo');
+        });
+        $(document).on('bar', function (e, result) {
+            $('#content').html(result.baz);
+        });
+    })();
+</script>
