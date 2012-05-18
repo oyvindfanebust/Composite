@@ -1,21 +1,57 @@
-﻿@model dynamic
-
-@{
+﻿@{
     ViewBag.Title = "Wizard";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <button id="run">Go!</button>
 
-<h2>Wizard</h2>
+<h2 data-bind="text: title"></h2>
+<table data-bind="foreach: persons">
+    <tr>
+        <td><input type="text" data-bind="value: person.Name"/></td>
+        <td><input type="text" data-bind="value: owner.NumberOfThings"/></td>
+    </tr>
+</table>
+
+<button data-bind="click: submit"></button>
+
 <div id="content"></div>
 <script type="text/javascript">
-    (function () {
-        $("#run").click(function (e) {
-            $(document).trigger('foo');
+    function FooModel(data) {
+        var that = this;
+        ko.mapping.fromJS(data, {}, this);
+        this.title = ko.computed(function () {
+            return "Foo!";
         });
-        $(document).on('bar', function (e, result) {
-            $('#content').html(result.baz);
+
+        this.submit = function() {
+            console.log(ko.mapping.toJSON(that.persons()[0].owner));
+        };
+    }
+
+    (function () {
+        
+        
+        $("#run").click(function (e) {
+            $(document).trigger('thingsNeeded');
+        });
+        var data = [];
+        $(document).on('thingsGotten', function (e, result) {
+            data = _.map(result.ThingOwners, function (to) {
+                return { id: to.Id, owner: to };
+            });
+        });
+
+        $(document).on('personsGotten', function (e, result) {
+            _.each(result.Persons, function (p) {
+                _.each(data, function (d) {
+                    if (d.owner.Id == p.Id) {
+                        d.person = p;
+                    }
+                });
+            });
+            var viewModel = new FooModel({persons: data});
+            ko.applyBindings(viewModel);
         });
     })();
 </script>

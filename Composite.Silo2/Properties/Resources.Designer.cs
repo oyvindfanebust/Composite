@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Composite.Silo1.Properties {
+namespace Composite.Silo2.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Composite.Silo1.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Composite.Silo1.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Composite.Silo2.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,17 +61,21 @@ namespace Composite.Silo1.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to (function() {
-        ///    $(document).on(&apos;thingsNeeded&apos;, function (e) {
-        ///        $.getJSON(&apos;/Silo1/GetThings&apos;, function (data) {
-        ///            $(document).trigger(&apos;thingsGotten&apos;, data);
+        ///   Looks up a localized string similar to (function () {
+        ///    $(document).on(&apos;thingsGotten&apos;, function (e, result) {
+        ///        $.getJSON(&apos;/Silo2/GetPersons&apos;, {
+        ///            ids: _.map(result, function (it) {
+        ///                return it.Id;
+        ///            })
+        ///        }, function (data) {
+        ///            $(document).trigger(&apos;personsGotten&apos;, data);
         ///        });
         ///    });
         ///})();.
         /// </summary>
-        internal static string Silo1 {
+        internal static string Silo2 {
             get {
-                return ResourceManager.GetString("Silo1", resourceCulture);
+                return ResourceManager.GetString("Silo2", resourceCulture);
             }
         }
     }

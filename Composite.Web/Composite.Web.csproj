@@ -71,11 +71,17 @@
     <Content Include="Scripts\jquery-1.7.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.7.2.js" />
     <Content Include="Scripts\jquery-1.7.2.min.js" />
+    <Content Include="Scripts\knockout-2.1.0.debug.js" />
+    <Content Include="Scripts\knockout-2.1.0.js" />
+    <Content Include="Scripts\knockout.mapping-latest.debug.js" />
+    <Content Include="Scripts\knockout.mapping-latest.js" />
+    <Content Include="Scripts\underscore.js" />
+    <Content Include="Scripts\underscore.min.js" />
     <Content Include="Web.config" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Wizard\Index.cshtml" />
+    <None Include="Views\Wizard\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -84,6 +90,10 @@
     <ProjectReference Include="..\Composite.Silo1\Composite.Silo1.csproj">
       <Project>{CEB636CD-A93A-42A6-97AD-B063FD890BD0}</Project>
       <Name>Composite.Silo1</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Composite.Silo2\Composite.Silo2.csproj">
+      <Project>{CD448C58-0DE9-4E04-8517-00734AF96485}</Project>
+      <Name>Composite.Silo2</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

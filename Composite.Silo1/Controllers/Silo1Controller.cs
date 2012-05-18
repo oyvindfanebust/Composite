@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Web.Mvc;
 using Composite.Silo1.Properties;
 
 namespace Composite.Silo1.Controllers
@@ -7,12 +9,28 @@ namespace Composite.Silo1.Controllers
     {
         public ActionResult Index()
         {
-            return Content(Resources.Test2, "application/javascript");
+            return JavaScript(Resources.Silo1);
         }
 
-        public ActionResult Foo()
+        public ActionResult GetThings()
         {
-            return Json(new {baz = "Hello!"}, JsonRequestBehavior.AllowGet);
+            return Json(new ThingContainer { ThingOwners = new List<ThingOwner>
+                                                               {
+                                                                   new ThingOwner{ Id = Guid.NewGuid(), NumberOfThings = 1 },
+                                                                   new ThingOwner{ Id = Guid.NewGuid(), NumberOfThings = 4 },
+                                                                   new ThingOwner{ Id = Guid.NewGuid(), NumberOfThings = 7 },
+                                                               } }, JsonRequestBehavior.AllowGet);
         }
+    }
+
+    public class ThingContainer
+    {
+        public List<ThingOwner> ThingOwners { get; set; }
+    }
+
+    public class ThingOwner
+    {
+        public Guid Id { get; set; }
+        public int NumberOfThings { get; set; }
     }
 }
